@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<title> Cisco Live NSO UI </title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm">
+  		<div class="container-fluid">
+   			<div class="navbar-header">
+
+   			</div>
+   			<div>
+    			<ul class="navbar-nav">
+     				<li class="nav-item">Vet</li>
+    			</ul>
+   			</div>
+  		</div>
+	</nav>
+	<div id="wrapper">
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="menu">MENU</li>
+				<li><a href="/"><i class="fas fa-paw"></i>  Add animal</a></li>
+				<li><a href="/animals_list"><i class="fas fa-cat"></i>  Show animals</a></li>
+			</ul>
+		</div>
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="col col-lg-10">
+				<form action="/add_animal" method="post" class="text-aligne: start!important border border-light p-5 shadow p-3 mb-5 bg-white rounded">
+						{% csrf_token %}
+
+						<p class="h4 mb-4" style="text-align: center">Contact us</p>
+
+						<!-- Name -->
+						<input type="text" name="name" class="form-control mb-4" placeholder="Name">
+
+						<!-- Email -->
+						<input type="text" name="age" class="form-control mb-4" placeholder="Age">
+						<!-- Species -->
+						<input type="text" name="species" class="form-control mb-4" placeholder="Species">
+						<!-- Subject -->
+						<label>Priority</label>
+						<select name="priority" class="browser-default custom-select mb-4">
+							<option value="" disabled>Choose priority</option>
+							<option value="Small" selected>Small</option>
+							<option value="Medium">Medium</option>
+							<option value="Major">Major</option>
+							<option value="Critical">Critical</option>
+						</select>
+
+						<!-- Message -->
+						<div class="form-group">
+							<textarea name="description" class="form-control rounded-0" rows="3" placeholder="Description"></textarea>
+						</div>
+
+						<!-- Send button -->
+						<button class="btn btn-info btn-block" type="submit">Send</button>
+
+					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+
+<style>
+	body{
+		background: #F3F3F5;
+		font-family: 'Roboto', sans-serif;
+	}
+	nav{
+		background: #262626;
+	}
+
+	img{
+		width:40%;
+		padding:2%;
+	}
+
+	h1{
+		text-align: center;
+	}
+
+	.nav-item{
+		color: white;
+	}
+
+	.menu{
+		background: #138496;
+		line-height: 70px;
+		padding-left: 60px;
+		font-weight: 500;
+		font-size: 150%;
+		color: white;
+	}
+
+	#item-1{
+		width:16%;
+		margin-right:7%
+	}
+
+	#item-2{
+		width:18%;
+		margin-right:6%;
+	}
+
+	#item-3{
+		width:15%;
+		margin-right: 9%;
+	}
+
+	#item-4{
+		width:13%;
+		margin-right: 9%;
+	}
+
+	#sidebar-wrapper {
+		z-index: 1;
+		position: absolute;
+		width: 0;
+		height: 100%;
+		overflow-y: hidden;
+		background: #334050;
+	}
+
+	#page-content-wrapper{
+		width: 100%;
+		position:absolute;
+		padding: 15px;
+	}
+
+	#wrapper #sidebar-wrapper{
+		width: 250px;
+	}
+
+	#wrapper #page-content-wrapper{
+		padding-left: 250px
+	}
+
+	.sidebar-nav{
+		padding: 0;
+		list-style: none;
+	}
+
+	.sidebar-nav li{
+		padding-top: 0px;
+		text-indent: 30px;
+		line-height: 80px;
+	}
+
+	.sidebar-nav li a{
+		font-family: 'Roboto', bold;
+		font-weight: 500;
+		display: block;
+		text-decoration: none;
+		color: #F3F3F5;
+		opacity:0.7;
+	}
+
+	.sidebar-nav li a:hover{
+		background: #231F20;
+		opacity:0.8;
+	}
+</style>
