@@ -33,23 +33,14 @@
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row justify-content-center">
-					<div class="col col-lg-10 text-aligne: start!important border border-light p-5 shadow p-3 mb-5 bg-white rounded">
-                        <table class="table">
-                            <thead class="thead-light">
-                            {% for head in field_names %}
-                               <th>{{ head }}</th>
-                            {% endfor %}
-                            </thead>
-                            <tbody>
-                            {% for row in data %}
-                                <tr>
-                                {% for cell in row %}
-                                    <td>{{ cell }}</td>
-                                {% endfor %}
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+					<div id="average" class="col col-lg-10 text-aligne: start!important border border-light p-5 shadow p-3 mb-5 bg-white rounded">
+                        Average amount of drunk coffee: <h1> {{ coffee_avg }} </h1>
+					</div>
+                    <div id="average" class="col col-lg-10 text-aligne: start!important border border-light p-5 shadow p-3 mb-5 bg-white rounded">
+                        Women in tech presence last year: <h1> {{ wits_presence }} </h1>
+					</div>
+                    <div id="average" class="col col-lg-10 text-aligne: start!important border border-light p-5 shadow p-3 mb-5 bg-white rounded">
+                        Median of age: <h1> {{ age_median }} </h1>
 					</div>
 				</div>
 			</div>
@@ -115,6 +106,7 @@
 		z-index: 1;
 		position: absolute;
 		width: 0;
+		height: 100%;
 		overflow-y: hidden;
 		background: #334050;
 	}
@@ -138,7 +130,9 @@
 		padding: 0;
 		list-style: none;
 	}
-
+    #average {
+        font-size: 20pt;
+    }
 	.sidebar-nav li{
 		padding-top: 0px;
 		text-indent: 30px;
@@ -158,4 +152,11 @@
 		background: #231F20;
 		opacity:0.8;
 	}
+    h1 {
+        text-align: center;
+        height: 100pt;
+        font-size: 100pt;
+        color: #138496;
+        }
+
 </style>

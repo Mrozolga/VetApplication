@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<title> Cisco Live NSO UI </title>
+	<title> Survey App </title>
 </head>
 
 <body>
@@ -26,43 +26,51 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="menu">MENU</li>
-				<li><a href="/"><i class="fas fa-paw"></i>  Add animal</a></li>
-				<li><a href="/animals_list"><i class="fas fa-cat"></i>  Show animals</a></li>
+				<li><a href="/"><i class="fas fa-paw"></i>  SURVEY</a></li>
+				<li><a href="/animals_list"><i class="fas fa-cat"></i>  Surveys preview</a></li>
+                <li><a href="/surveys_analytics"><i class="fas fa-cat"></i>  Surveys analytics</a></li>
 			</ul>
 		</div>
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col col-lg-10">
-				<form action="/add_animal" method="post" class="text-aligne: start!important border border-light p-5 shadow p-3 mb-5 bg-white rounded">
+				<form action="/add_answer" method="post" class="text-align: start!important border border-light p-5 shadow p-3 mb-5 bg-white rounded">
 						{% csrf_token %}
 
-						<p class="h4 mb-4" style="text-align: center">Contact us</p>
+						<p class="h4 mb-4" style="text-align: center">Please fill the survey</p>
 
 						<!-- Name -->
-						<input type="text" name="name" class="form-control mb-4" placeholder="Name">
+                        <label>1. How do you like the weather today? (1-5)</label>
+						<input type="text" name="question1" class="form-control mb-4" placeholder="">
 
-						<!-- Email -->
-						<input type="text" name="age" class="form-control mb-4" placeholder="Age">
-						<!-- Species -->
-						<input type="text" name="species" class="form-control mb-4" placeholder="Species">
+						<label>2. What is your age?</label>
+						<input type="text" name="question2" class="form-control mb-4" placeholder="">
+
+						<label>3. How many coffees did you drink today?</label>
+						<input type="text" name="question3" class="form-control mb-4" placeholder="">
 						<!-- Subject -->
-						<label>Priority</label>
-						<select name="priority" class="browser-default custom-select mb-4">
-							<option value="" disabled>Choose priority</option>
-							<option value="Small" selected>Small</option>
-							<option value="Medium">Medium</option>
-							<option value="Major">Major</option>
-							<option value="Critical">Critical</option>
+						<label>Is it your first Women in Tech Conference?</label>
+						<select name="question4" class="browser-default custom-select mb-4">
+							<option value="Yes" selected>Yes</option>
+							<option value="No">No</option>
+							<option value="Maybe">Maybe</option>
 						</select>
-
-						<!-- Message -->
-						<div class="form-group">
-							<textarea name="description" class="form-control rounded-0" rows="3" placeholder="Description"></textarea>
-						</div>
+                        <label>5. How would you name your boat if you had one?</label>
+						<input type="text" name="question5" class="form-control mb-4" placeholder="">
 
 						<!-- Send button -->
 						<button class="btn btn-info btn-block" type="submit">Send</button>
+{#                    {% if error_message %}#}
+{#                        <script>function decodeHtml(html) {#}
+{#                                    var txt = document.createElement("textarea");#}
+{#                                    txt.innerHTML = html;#}
+{#                                    return txt.value;#}
+{#                                }#}
+{#                                var alert_msg = decodeHtml("{{ error_message }}");#}
+{#                                alert(alert_msg)</script>#}
+{#                        <div class="alert alert-danger"><p><strong>{{ error_message }}</strong></p></div>#}
+{#                    {% endif %}#}
 
 					</form>
 					</div>
@@ -142,6 +150,7 @@
 
 	#wrapper #sidebar-wrapper{
 		width: 250px;
+        height: 80em;
 	}
 
 	#wrapper #page-content-wrapper{
