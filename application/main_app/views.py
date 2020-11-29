@@ -31,7 +31,7 @@ def add_answer(request):
     #     return response
 
 
-def animals_list(request):
+def survey_preview(request):
     model = SurveyAnswer
     questions_mapping = {
         "question1": "1. How do you like the weather today?",
@@ -43,7 +43,7 @@ def animals_list(request):
     field_names = [f.name for f in model._meta.get_fields() if f.name != "id"]
     data = [[getattr(ins, name) for name in field_names]
             for ins in model.objects.prefetch_related().all()]
-    return render(request, 'animals_list.html', {'field_names': [questions_mapping.get(x) for x in field_names], 'data': data})
+    return render(request, 'survey_preview.html', {'field_names': [questions_mapping.get(x) for x in field_names], 'data': data})
 
 
 def surveys_analytics(request):
