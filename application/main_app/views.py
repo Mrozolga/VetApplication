@@ -1,7 +1,5 @@
-from django.db.models import Model
 from django.shortcuts import render
-from .models import Animal, SurveyAnswer
-from django.http import HttpResponse
+from .models import SurveyAnswer
 
 
 def hello_world(request):
@@ -23,12 +21,6 @@ def add_answer(request):
 
     else:
         return render(request, 'survey.html', {})
-    # except Exception as e:
-    #     response = render(request, 'survey.html', {
-    #         'error_message': e
-    #     })
-    #     response.status_code = 400
-    #     return response
 
 
 def survey_preview(request):
