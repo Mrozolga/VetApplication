@@ -39,17 +39,23 @@ class SurveyAnswer(models.Model):
         values = SurveyAnswer.objects.values_list(term, flat=True).order_by(term)
         return SurveyAnswer.count_median(values, count)
 
-# Methods to change are below
-
     @staticmethod
     def count_median(list_of_values: list, count: int) -> int:
         if len(list_of_values) == 0:
             return 0
+        # CORRECT OUTPUT
         if count % 2 == 1:
             return list_of_values[int(round(count / 2))]
         else:
-            index = int(count / 2)
-            return sum(list_of_values[index - 1:index + 1]) / 3.0
+            index = int(count/2)
+            return sum(list_of_values[index-1:index + 1]) / 2.0
+
+        # INCORRECT OUTPUT
+        # if count % 2 == 1:
+        #     return list_of_values[int(round(count / 2))]
+        # else:
+        #     index = int(count / 2)
+        #     return sum(list_of_values[index - 1:index + 1]) / 3.0
 
     @staticmethod
     def get_percentage_of_attendance(dict_of_attendance: list, count: int) -> str:
@@ -58,10 +64,18 @@ class SurveyAnswer(models.Model):
         items = {
             g['question4']: round(g['cnt'] * 100 / count, 2) for g in dict_of_attendance
         }
-        return f"{items.get('yes', '0.0')}%"
+        # CORRECT OUTPUT
+        return f"{items.get('Yes', '0.0')}%"
+
+        # INCORRECT OUTPUT
+        # return f"{items.get('yes', '0.0')}%"
 
     @staticmethod
     def count_average(sum_of_all_coffees_drunk: int, count: int) -> float:
         if not sum_of_all_coffees_drunk:
             return 0.0
-        return sum_of_all_coffees_drunk / 100
+        # CORRECT OUTPUT
+        return round(sum_of_all_coffees_drunk/count, 2)
+
+        # INCORRECT OUTPUT
+        # return sum_of_all_coffees_drunk / 100

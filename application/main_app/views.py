@@ -7,7 +7,6 @@ def hello_world(request):
 
 
 def add_answer(request):
-    # try:
     if request.method == 'POST':
         survey = SurveyAnswer()
         survey.question1 = request.POST.get('question1')
