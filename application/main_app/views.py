@@ -11,10 +11,16 @@ def add_answer(request):
     if request.method == 'POST':
         survey = SurveyAnswer()
         survey.question1 = request.POST.get('question1')
+        if int(survey.question1) not in range(1, 6):
+            raise Exception(f"The weather must be rated 1-5, and you chose {survey.question1}")
         survey.question2 = request.POST.get('question2')
         survey.question3 = request.POST.get('question3')
         survey.question4 = request.POST.get('question4')
+        if survey.question4 not in ['Yes', 'No']:
+            raise Exception("Posssible answers are 'Yes' or 'No' only")
         survey.question5 = request.POST.get('question5')
+        if str(survey.question5)[0].islower():
+            raise Exception("Name needs to start with upper letter")
         survey.save()
 
         return render(request, 'survey.html', {})
